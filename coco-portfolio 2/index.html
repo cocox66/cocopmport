@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coco Xia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FCF8F9;
+    --ink:#221F1D;
+    --muted:#8C867F;
+    --rose:#C24A6E;
+    --rose-bright:#D25579;
+    --rose-tint:#F5E8ED;
+    --line:#ECE5E1;
+    --display:'Cormorant Garamond','Noto Serif SC',Georgia,serif;
+    --body:'EB Garamond','Noto Serif SC',Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);
+    font-size:19px;line-height:1.66;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px;margin:0 auto;padding:0 28px}
+  a{color:inherit}
+
+  /* hero */
+  header{padding:15vh 0 9vh}
+  .bird{width:92px;height:auto;display:block;margin-bottom:30px}
+  .bird path{fill:none;stroke:var(--rose-bright);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:600;stroke-dashoffset:600;animation:draw 3.4s .2s ease forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  h1{font-family:var(--display);font-weight:500;font-size:clamp(3.2rem,10vw,5.8rem);
+    line-height:.97;letter-spacing:-.01em}
+  .lede{font-family:var(--display);font-size:clamp(1.3rem,3.3vw,1.72rem);font-weight:400;
+    line-height:1.42;color:#403b37;max-width:34ch;margin-top:24px}
+  .lede b{font-weight:600;color:var(--ink)}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .strip{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;margin-top:38px}
+  .strip img{height:170px;width:auto;max-width:100%;border-radius:2px;cursor:pointer;transition:transform .4s ease}
+  .strip img:hover{transform:translateY(-3px);filter:saturate(1.1)}
+
+  /* identity list */
+  section.roles{padding:1vh 0 9vh}
+  .roles__intro{font-family:var(--display);font-style:italic;font-size:1.5rem;color:var(--muted);margin-bottom:4px}
+  .role{border-top:1px solid var(--line)}
+  .role:last-child{border-bottom:1px solid var(--line)}
+  .role__head{width:100%;background:none;border:0;cursor:pointer;text-decoration:none;display:flex;align-items:baseline;
+    justify-content:space-between;gap:20px;padding:22px 2px;text-align:left;color:var(--ink);
+    font-family:var(--display);font-size:clamp(2rem,5.4vw,2.9rem);font-weight:500;line-height:1;
+    letter-spacing:-.01em;transition:color .25s ease}
+  .role__head:hover,.role__head:focus-visible{color:var(--rose);outline:none}
+  .role__head .plus{font-family:var(--body);font-size:1.05rem;color:var(--muted);flex:0 0 auto;
+    transform:translateY(-.35em);transition:transform .3s ease,color .25s ease}
+  .role.open .plus.p{transform:translateY(-.35em) rotate(45deg);color:var(--rose)}
+  .role__body{overflow:hidden;max-height:0;transition:max-height .45s cubic-bezier(.2,.7,.2,1)}
+  .role__inner{padding:2px 2px 32px;max-width:60ch}
+  .role__inner>p{color:#403b37}
+  .role__inner>p+p{margin-top:12px}
+
+  .work{margin-top:24px;padding-top:24px;border-top:1px dotted var(--line)}
+  .work:first-child{border-top:0;margin-top:14px;padding-top:0}
+  .work h4{font-family:var(--display);font-size:1.55rem;font-weight:600;line-height:1.12}
+  .work .meta{font-size:.9rem;color:var(--muted);margin:2px 0 9px;font-style:italic}
+  .work p{font-size:1rem;line-height:1.6;color:#403b37}
+  .work p.excerpt{font-style:italic;color:#4a443f}
+  .work .more{margin-top:10px}
+  .links{margin-top:11px;display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+  a.pink,.linkbtn{color:var(--rose);text-decoration:none;font-family:var(--body);font-size:.95rem;
+    background:none;border:0;border-bottom:1px solid var(--rose);padding:0 0 1px;cursor:pointer;transition:opacity .2s}
+  a.pink:hover,.linkbtn:hover{opacity:.6}
+  .chip{font-family:var(--body);font-size:.62em;font-style:normal;color:var(--rose);
+    border:1px solid var(--rose);border-radius:999px;padding:2px 9px;vertical-align:middle;margin-left:8px}
+  .stat-line{margin-top:14px!important;font-size:1.05rem}
+  .stat-line b{font-weight:600}
+  .handle{margin-top:6px!important;font-style:italic;color:var(--muted)}
+
+  /* footer */
+  footer{padding:7vh 0 13vh;border-top:1px solid var(--line)}
+  .say{font-family:var(--display);font-style:italic;font-size:1.5rem;color:var(--muted);margin-bottom:14px}
+  .contacts{display:flex;gap:26px;flex-wrap:wrap}
+  .contacts a{text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s,color .2s}
+  .contacts a:hover{color:var(--rose);border-color:var(--rose)}
+  .fine{margin-top:36px;font-size:.85rem;color:var(--muted);max-width:52ch}
+
+  /* gallery view */
+  #gallery{display:none;padding:8vh 0 12vh}
+  body.gallery-open #home{display:none}
+  body.gallery-open #gallery{display:block}
+  .back{background:none;border:0;cursor:pointer;font-family:var(--display);font-style:italic;
+    font-size:1.1rem;color:var(--muted);margin-bottom:3vh;transition:color .2s}
+  .back:hover{color:var(--rose)}
+  #gallery h2{font-family:var(--display);font-weight:500;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1;margin-bottom:18px}
+  #gintro{max-width:60ch;color:#403b37;margin-bottom:22px}
+  .gstats{display:flex;gap:34px;flex-wrap:wrap;margin-bottom:6px;align-items:baseline}
+  .gstats .n{font-family:var(--display);font-size:2.6rem;font-weight:500;line-height:1;color:var(--rose)}
+  .gstats .l{font-size:.9rem;color:var(--muted);margin-top:2px}
+  #glatest{font-size:.98rem;color:var(--muted);margin:14px 0 34px}
+  .grid{column-count:3;column-gap:12px}
+  .tile{position:relative;overflow:hidden;border-radius:2px;cursor:pointer;background:var(--rose-tint);break-inside:avoid;margin:0 0 12px}
+  .tile img{width:100%;height:auto;display:block;transition:transform .5s ease,filter .3s ease}
+  .tile:hover img{transform:scale(1.04);filter:brightness(.6)}
+  .tile figcaption{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+    align-items:center;text-align:center;gap:2px;padding:12px;opacity:0;color:#fff;transition:opacity .3s ease}
+  .tile:hover figcaption{opacity:1}
+  .tile figcaption span{font-family:var(--display);font-size:1.25rem;font-weight:600;line-height:1.15}
+  .tile figcaption em{font-size:.85rem;opacity:.9}
+  .gfine{margin-top:30px;font-size:.85rem;color:var(--muted)}
+
+  /* lightbox */
+  #lightbox{position:fixed;inset:0;background:rgba(30,22,26,.92);display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:16px;padding:30px;opacity:0;pointer-events:none;
+    transition:opacity .3s ease;z-index:100}
+  #lightbox.on{opacity:1;pointer-events:auto}
+  #lightbox img{max-width:92vw;max-height:80vh;object-fit:contain;border-radius:2px}
+  .lb-cap{color:#f4eef0;font-family:var(--display);font-size:1.3rem}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .bird path{stroke-dashoffset:0}
+  }
+  @media(max-width:560px){.strip img{height:110px}.grid{column-count:2}}
+</style>
+</head>
+<body>
+
+<main id="home"><div class="wrap">
+  <header>
+    <svg class="bird" viewBox="0 0 150 110" aria-hidden="true">
+      <path d="M70 62c-6-10-4-24 6-31 8-6 19-5 26 2"/>
+      <path d="M104 34 L138 22 M103 38 L131 31"/>
+      <path d="M70 62c-10 2-22 0-33-7 12 0 20-3 26-9"/>
+      <path d="M70 62c-2 12-9 24-20 33 4-14 4-25 1-33"/>
+      <circle cx="97" cy="37" r="2.6" fill="#D25579"/>
+    </svg>
+    <h1 id="name">Coco Xia</h1>
+    <p class="lede" id="lede"></p>
+    <div class="strip" id="strip"></div>
+  </header>
+  <section class="roles">
+    <p class="roles__intro">I am a</p>
+    <div id="roles"></div>
+  </section>
+  <footer>
+    <p class="say">say hi</p>
+    <div class="contacts" id="contacts"></div>
+    <p class="fine">All bird photos &copy; Coco Xia. Please ask before using: cocoxia@stanford.edu</p>
+  </footer>
+</div></main>
+
+<section id="gallery"><div class="wrap">
+  <button class="back" id="gback">&larr; back to the nest</button>
+  <h2>In the field</h2>
+  <p id="gintro"></p>
+  <div class="gstats">
+    <div><div class="n" id="glife"></div><div class="l">species on my life list</div></div>
+    <div><div class="n" id="gcount"></div><div class="l">countries</div></div>
+  </div>
+  <p id="glatest"></p>
+  <div class="grid" id="ggrid"></div>
+  <p class="gfine">All photos &copy; Coco Xia. Please ask before using: cocoxia@stanford.edu</p>
+</div></section>
+
+<div id="lightbox"><img alt=""><div class="lb-cap"></div></div>
+
+<script>
+const CONFIG = {
+  name: "Coco Xia",
+
+  bubbles: [
+    { label: "Birdwatcher",     section: "field",    color: "#ffdbe8", size: 66 },
+    { label: "Researcher",      section: "research", color: "#f9cfe0", size: 64 },
+    { label: "Builder",         section: "apps",     color: "#ffe0ec", size: 56 },
+    { label: "Writer",          section: "writing",  color: "#fbd3e2", size: 56 },
+    { label: "Content creator", section: "creator",  color: "#f8d8e6", size: 74 },
+    { label: "Strategist",      section: "strategy", color: "#f2d3e4", size: 60 },
+    { label: "Student",         section: "student",  color: "#f6c8dd", size: 54 },
+  ],
+
+  apps: {
+    note: "things I’ve built",
+    items: [
+      { bird: "bluejay", name: "Soundscape",
+        desc: "I built this web app to spread conservation awareness by making it easier for people to birdwatch. Anyone can record on a patch of land, and Soundscape separates out the birdsong, predicts which species are present, and turns it into a picture of the area’s biodiversity. It also flags when what it hears doesn’t match what’s usually seen there.",
+        tech: "bioacoustics · ML",
+        code: "https://github.com/cocox66/soundscape", demo: "https://www.youtube.com/watch?v=S2gJOMqPi8k" },
+      { bird: "cardinal", name: "HummiBayes",
+        desc: "I built this web app to help birdwatchers identify a hummingbird’s species using its wingbeat frequency. Based on Bayesian inference, the app matches the frequency to the most likely hummingbird species with confidence scores. HummiBayes can also pull the frequency straight out of an uploaded video, so you can point, shoot, and get an ID.",
+        tech: "Bayesian inference · computer vision",
+        code: "https://github.com/cocox66/hummiBayes_109", live: "https://hummi-bayes-109.vercel.app", liveLabel: "Try it", demo: "https://www.youtube.com/watch?v=wu3Ybe9qZ3o" },
+      { bird: "chickadee", name: "Morpheus",
+        desc: "As part of TreeHacks 2025, I helped build this real-time ASL tutor to close the communication gap between signers and non-signers. Worn through Meta Ray-Ban glasses (or any camera), Morpheus reads your hand movements with computer vision, recognizes ASL letters and words, and translates them to speech on the spot, all while acting as a patient tutor that gives instant, adaptive feedback as you learn to sign.",
+        tech: "computer vision · MediaPipe · OpenAI",
+        code: "https://github.com/stevensegawa/asl-recognition-web", live: "https://devpost.com/software/morpheus-iq2g1y", liveLabel: "Demo" },
+      { bird: "goldfinch", name: "Fledge AI", inProgress: true,
+        desc: "I’m building an AI copilot to help students through the stressful college-application journey. Early days, still finalizing what it should be.",
+        tech: "in ideation", code: "", live: "" },
+    ],
+  },
+
+  research: {
+    note: "computational genomics & immunology research",
+    heading: "Benchmarking SWAP-seq against PRIME-Del in PPIF enhancers to advance coronary artery disease research",
+    fullTitle: "Investigating the Effects of SWAP-seq Enhancer Deletions Using PRIME-Del as Validation in Coronary Artery Disease",
+    summary: "Through the Stanford Bio-X Award, I conduct research in the Engreitz Lab studying <em>enhancers</em>, or the non-coding “switches” that decide when and how strongly a gene turns on. Roughly 90% of disease-linked variants sit in this non-coding DNA, so studying enhancers matters enormously for conditions like coronary artery disease.",
+    abstract: "My project specifically validates SWAP-seq, a high-throughput screen of candidate regulatory elements, against PRIME-Del, which makes precise, scarless deletions. I designed three deletions of increasing lengths across the PPIF enhancers, cloned and transfected them into human cells, confirmed successful editing by PCR, and used ChromBPNet, a deep-learning model, to predict the effect on chromatin accessibility. Larger deletions resulted in bigger drops in accessibility, tying enhancer disruption to reduced gene expression and validating SWAP-seq mechanisms. Full poster below.",
+    posterImg: "images/poster.jpg",
+    posterPdf: "images/poster.pdf",
+    inPress: {
+      label: "Co-author · Science Translational Medicine (2026)",
+      note: "Computational research in the Aghaeepour Lab at the Stanford AIMI Center. Manuscript approved and in press; link coming on publication.",
+    },
+  },
+
+  writing: {
+    note: "pieces I wrote",
+    pieces: [
+      { title: "Weathered", subtitle: "creative nonfiction",
+        excerpt: `I wandered around in Maggie Nelson’s Bluets. It was like a maze, its scatteredness pulling me into an intricately woven network of befuddled thoughts and untold stories. Suppose I also fell in love with the color blue, as passionately as she did.`,
+        more: `I realized that in my distant memories lay a particular shade of blue that fascinates me. It wasn’t quite like the blinding turquoise that made her life remarkable; it was a more gentle, velvety blend of sapphire and azure — the plumage of a cerulean warbler that would winter in the foothills of somewhere like Belize. In fact, it was the color of the waves in Pacuare Reserve, Costa Rica, a place that could pull me into tangled trains of thoughts every time I reminisced about the people I met, the dreams I had, the things I did and did not do. The ocean of Pacuare followed no rules. With each wave that crashed upon the dusky, sandy shore, the sea sang symphonies of sounds and echoed eternal rhythms of tides. The water unleashed its power at the beach, pouring, unrestrained, only to recede quietly into the sea, like a child’s apology to a careless wrongdoing, a lover’s tender retreat.` },
+      { title: "Becoming", subtitle: "a short story", page: "writing-becoming.html",
+        excerpt: `He never quite understood why the giants spent their days going to something called “school.” He knew the stone buildings were where something called knowledge gets spread and minds enlightened — he’d heard the giants say so themselves — but school was never something he’d had to attend.`,
+        more: `He has always been a strong believer of learning through living. He’d learned how a kestrel chases hummingbirds, seen how a praying mantis can snatch his best friend right out of the air, a creature so small and seemingly harmless that he should’ve known its bright colors were a warning. That lesson had cost him a friend, but he knows it forever now, written into his tiny bones, not onto some page he’d have to carry around in a sack. And so the giants baffled him. They hauled those sacks into fluorescent rooms to memorize the thoughts of other giants, many of whom, he gathered, were already dead: long-gone philosophers and scholars whose ideas the living ones recited back like prayers and hymns. Imagine, he thought, learning how to live from someone who was no longer alive. That’s so funny. They stored away mountains of knowledge they would surely never use, while a kestrel could teach you everything that mattered in a single afternoon, if you could survive that lesson.` },
+      { title: "Moth", subtitle: "prose",
+        excerpt: `sometimes you thought you loved him; sometimes you fought to breathe in a maelstrom of emotions; you didn’t know if you’d plunged yourself into a paradise or an abyss; you wondered if it was even love that billowed within you.`,
+        more: `your words never came out measured; they gushed; unbridled; unrestrained; the opposite of the Goleta ocean that never even broke into whitecaps; it was a flood that could drown both of you; though it would take him longer: he could make sins sound so heavenly; could destroy his own feelings the way an artist shatters unfinished ceramics; you knew that one day he would tell you that he couldn’t stay; but you still felt a stab when it happened; and so he kept you hanging like a shipwreck lost at sea; a canary with its wings clipped that sang a soulless song.` },
+    ],
+  },
+
+  fieldNotes: {
+    note: "six years in the field",
+    intro: "I’ve been a birdwatcher for six years, having started when I was in Singapore getting a visa to attend high school in the States. I saw a Javan Myna on Orchard Road and immediately fell in love, and have been an avid birdwatcher ever since. So far I’ve been to 12 countries to birdwatch and founded a birdwatching club in high school, growing it from a handful of members to a hundred and counting. My photography has been recognized by ZEISS, the Nature Conservancy, and the Alliance for Young Artists & Writers.",
+    lifeList: 556,
+    latest: { name: "Meadow Bunting", place: "Yamanashi, Japan", url: "https://ebird.org/species/meabun1" },
+    stats: [
+      { number: "100+", label: "club members grown" },
+      { number: "3",    label: "orgs recognizing the work" },
+    ],
+    countries: [
+      { name: "Singapore",     lat: 1.35,   lon: 103.82 },
+      { name: "Malaysia",      lat: 4.21,   lon: 101.98 },
+      { name: "Thailand",      lat: 15.0,   lon: 101.0 },
+      { name: "Maldives",      lat: 3.2,    lon: 73.22 },
+      { name: "China",         lat: 35.86,  lon: 104.2 },
+      { name: "Fiji",          lat: -17.71, lon: 178.07 },
+      { name: "Saipan",        lat: 15.19,  lon: 145.75 },
+      { name: "Costa Rica",    lat: 9.75,   lon: -83.75 },
+      { name: "Puerto Rico",   lat: 18.22,  lon: -66.59 },
+      { name: "United States", lat: 39.5,   lon: -98.35 },
+      { name: "Spain",         lat: 40.2,   lon: -3.7 },
+      { name: "Greece",        lat: 39.07,  lon: 22.0 },
+    ],
+    photos: [
+      { src: "images/scarlet-finch.jpg",               caption: "Scarlet Finch",              place: "Yunnan, China" },
+      { src: "images/anhinga.jpg",                     caption: "Anhinga",                    place: "Bay Lake, FL" },
+      { src: "images/fiji-parrotfinch.jpg",            caption: "Fiji Parrotfinch",           place: "Nadi, Fiji" },
+      { src: "images/kadavu-fantail.jpg",              caption: "Kadavu Fantail",             place: "Kadavu Island, Fiji" },
+      { src: "images/silver-throated-tit.jpg",         caption: "Silver-throated Tit",        place: "Shanghai, China" },
+      { src: "images/black-throated-green-warbler.jpg", caption: "Black-throated Green Warbler", place: "New York, NY" },
+      { src: "images/sandhill-crane.jpg",              caption: "Sandhill Crane",             place: "Merced, CA" },
+      { src: "images/heermanns-gull.jpg",              caption: "Heermann’s Gull",            place: "Half Moon Bay, CA" },
+      { src: "images/boat-tailed-grackle.jpg",         caption: "Boat-tailed Grackle",        place: "Bay Lake, FL" },
+      { src: "images/whiskered-tern.jpg",              caption: "Whiskered Tern",             place: "Ningbo, China" },
+      { src: "images/piping-plover.jpg",               caption: "Piping Plover",              place: "New Haven, CT" },
+      { src: "images/australian-magpie.jpg",           caption: "Australian Magpie",          place: "Taveuni, Fiji" },
+      { src: "images/many-colored-fruit-dove.jpg",     caption: "Many-colored Fruit Dove",    place: "Suva, Fiji" },
+      { src: "images/kadavu-honeyeater.jpg",           caption: "Kadavu Honeyeater",          place: "Kadavu Island, Fiji" },
+      { src: "images/golden-dove.jpg",                 caption: "Golden Dove",                place: "Suva, Fiji" },
+      { src: "images/chestnut-throated-flycatcher.jpg", caption: "Chestnut-throated Flycatcher", place: "Suva, Fiji" },
+      { src: "images/pacific-robin.jpg",               caption: "Pacific Robin",              place: "Suva, Fiji" },
+      { src: "images/white-browed-laughingthrush.jpg", caption: "White-browed Laughingthrush", place: "Shanghai, China" },
+      { src: "images/chinese-blackbird.jpg", caption: "Chinese Blackbird", place: "Shanghai, China" },
+      { src: "images/golden-throated-barbet.jpg", caption: "Golden-throated Barbet", place: "Yunnan, China" },
+      { src: "images/light-vented-bulbul.jpg", caption: "Light-vented Bulbul", place: "Yunnan, China" },
+      { src: "images/beautiful-sibia.jpg", caption: "Beautiful Sibia", place: "Yunnan, China" },
+      { src: "images/orange-breasted-myzomela.jpg", caption: "Orange-breasted Myzomela", place: "Nadi, Fiji" },
+      { src: "images/marsh-sandpiper.jpg", caption: "Marsh Sandpiper", place: "Hangzhou, China" },
+      { src: "images/rufous-tailed-hummingbird.jpg", caption: "Rufous-tailed Hummingbird", place: "Pacuare River, Costa Rica" },
+      { src: "images/spotted-dove.jpg", caption: "Spotted Dove", place: "Shanghai, China" },
+      { src: "images/white-breasted-waterhen.jpg", caption: "White-breasted Waterhen", place: "Dhaalu Atoll, Maldives" },
+    ],
+  },
+
+  strategy: {
+    note: "strategy · go-to-market · biotech",
+    items: [
+      { bird: "robin", name: "BeOne Medicines", meta: "product management intern · biopharma",
+        desc: "During my internship at BeOne Medicines, I led the enhancement of CLL Navigator, a patient-facing site with 140K+ visits that helps chronic lymphocytic leukemia patients nationwide find the right treatment. I created patient content on responsible AI use, prioritizing readability to drive 600+ downloads and a 30% engagement lift, and I sourced 40+ national oncology organizations, running prioritized outreach that secured executive meetings with four, including the CEOs of Triage Cancer and the Association of Cancer Care Centers.",
+        links: [{label:"CLL Navigator", href:"https://cllnavigator.com/chronic-lymphocytic-leukemia/using-ai-to-prepare-for-cll-care-conversations/"}] },
+      { bird: "bunting", name: "Atria", meta: "go-to-market · market sizing · TreeHacks 2026",
+        desc: "As part of TreeHacks 2026, I led go-to-market and market sizing for Atria, an AI hospital-orchestration platform: I sized the opportunity (TAM, SAM, and SOM), modeled the path to breakeven, and built the full business plan and GTM deck pitched to 10+ investors. My teammates built the multi-agent system and models, and my focus was the market and the story.",
+        links: [{label:"Business plan & GTM", href:"https://docs.google.com/presentation/d/1deTLmviExgFV57lNZ7W7a4uTCe0WKyaY5UGS0x8Udkk/edit?usp=sharing"},{label:"Devpost", href:"https://devpost.com/software/atria-az68sw"},{label:"Team repo", href:"https://github.com/emma-di/treehacks2026"}] },
+    ],
+  },
+  creator: {
+    note: "小红书 (RedNote)",
+    image: "images/rednote.jpg",
+    blurb: "I built and scaled a content brand for international students across 100+ short-form videos, iterating formats on engagement data. I share everyday student life, college-application advice, and the big-sister guidance I wish I’d had, and I’ve monetized it into a $3K+ business through 1:1 mentorship and brand partnerships.",
+    followers: 8025,
+    engagements: 19400,
+    handle: "小红书 (RedNote) · @Coco在斯坦福 · ID: cocoxiacx",
+  },
+  student: {
+    note: "Shanghai → Boston → California → Oxford",
+    intro: "Having grown up in Shanghai, gone to high school near Boston, attending college in California, and headed to Oxford for a quarter this winter, I love learning about other cultures and being a bridge between all of them.",
+    pins: [
+      { name: "Shanghai",   lat: 31.23, lon: 121.47, note: "Raised in Shanghai; I love going back to the city every break." },
+      { name: "Boston",     lat: 42.36, lon: -71.06, note: "I spent high school on the east coast and loved Boston." },
+      { name: "Stanford",   lat: 37.43, lon: -122.17, note: "Where I study now: Stanford University." },
+      { name: "San Carlos", lat: 37.51, lon: -122.26, dx: 0, dy: -6, note: "This past summer I had my first-ever biopharma role at BeOne Medicines, where I worked on the patient side doing patient engagement and product management for a patient-navigator platform, focusing on new content creation, streamlining internal workflows, and building external outreach and partnerships." },
+      { name: "Oxford",     lat: 51.75, lon: -1.26, note: "Next winter (2026-2027) I'm heading to Oxford to study birds, can't wait!" },
+    ],
+    contacts: [
+      { icon: "github",   label: "GitHub",   href: "https://github.com/cocox66" },
+      { icon: "mail",     label: "Email",    href: "mailto:cocoxia@stanford.edu" },
+      { icon: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/coco-xia-stanford" },
+    ],
+  },
+};
+
+const C=CONFIG,$=s=>document.querySelector(s);
+const nCountries=(C.fieldNotes.countries||[]).length;
+const alink=(h,l)=>h?`<a class="pink" href="${h}" target="_blank" rel="noopener">${l}</a>`:'';
+
+$('#lede').innerHTML=`I build and ship <b>AI products</b>, and I&rsquo;ve counted <b>${C.fieldNotes.lifeList} bird species</b> across ${nCountries} countries.`;
+$('#contacts').innerHTML=C.student.contacts.map(c=>`<a href="${c.href}"${c.href.startsWith('mailto')?'':' target="_blank" rel="noopener"'}>${c.label}</a>`).join('');
+
+// hero photo strip (first 3)
+$('#strip').innerHTML=C.fieldNotes.photos.slice(0,3).map(p=>`<img loading="lazy" src="${p.src}" alt="${p.caption}">`).join('');
+$('#strip').addEventListener('click',openGallery);
+
+// ---- role inner builders ----
+const appsHTML=()=>C.apps.items.map(a=>`<div class="work"><h4>${a.name}${a.inProgress?'<span class="chip">in progress</span>':''}</h4><div class="meta">${a.tech}</div><p>${a.desc}</p><div class="links">${alink(a.code,'Code')}${alink(a.live,a.liveLabel||'Live')}${alink(a.demo,'Demo')}</div></div>`).join('');
+const researchHTML=()=>{const r=C.research;return `<div class="work"><h4>${r.inPress.label}</h4><p>${r.inPress.note}</p></div><div class="work"><h4>${r.heading}</h4><p>${r.summary}</p><p style="margin-top:10px">${r.abstract}</p><div class="links">${alink(r.posterPdf,'View the poster')}</div></div>`;};
+const strategyHTML=()=>C.strategy.items.map(a=>`<div class="work"><h4>${a.name}</h4><div class="meta">${a.meta}</div><p>${a.desc}</p><div class="links">${a.links.map(l=>alink(l.href,l.label)).join('')}</div></div>`).join('');
+const creatorHTML=()=>{const c=C.creator,e=(c.engagements/1000).toFixed(1).replace(/\.0$/,'')+'k';return `<p>${c.blurb}</p><p class="stat-line"><b>${c.followers.toLocaleString()}</b> followers &nbsp;&middot;&nbsp; <b>${e}</b> likes &amp; saves</p><p class="handle">${c.handle}</p>`;};
+const writingHTML=()=>C.writing.pieces.map((p,i)=>`<div class="work"><h4>${p.title}</h4><div class="meta">${p.subtitle}</div><p class="excerpt">${p.excerpt}</p>${p.page?`<div class="links">${alink(p.page,'Read the full story')}</div>`:`<p class="more" id="m${i}" hidden>${p.more||''}</p><div class="links"><button class="linkbtn" data-more="m${i}">Read more</button></div>`}</div>`).join('');
+
+const ROLES=[
+  {k:'Builder',b:appsHTML},{k:'Researcher',b:researchHTML},{k:'Strategist',b:strategyHTML},
+  {k:'Content creator',b:creatorHTML},{k:'Writer',href:'writing.html'},{k:'Birdwatcher',gallery:true},
+];
+const list=$('#roles');
+ROLES.forEach((r,idx)=>{
+  const last=idx===ROLES.length-1, label=last?('and '+r.k):r.k;
+  const div=document.createElement('div');div.className='role';
+  if(r.gallery){
+    div.innerHTML=`<button class="role__head" aria-expanded="false">${label} <span class="plus">&rarr;</span></button>`;
+    div.querySelector('button').addEventListener('click',openGallery);
+  }else if(r.href){
+    div.innerHTML=`<a class="role__head" href="${r.href}">${label} <span class="plus">&rarr;</span></a>`;
+  }else{
+    div.innerHTML=`<button class="role__head" aria-expanded="false">${label} <span class="plus p">+</span></button><div class="role__body"><div class="role__inner">${r.b()}</div></div>`;
+    const btn=div.querySelector('.role__head'),body=div.querySelector('.role__body');
+    btn.addEventListener('click',()=>{
+      if(div.classList.contains('open')){body.style.maxHeight=null;div.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+      else{div.classList.add('open');btn.setAttribute('aria-expanded','true');body.style.maxHeight=body.scrollHeight+'px';}
+    });
+  }
+  list.appendChild(div);
+});
+
+// read-more toggles (writer)
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-more]');if(!b)return;
+  const m=document.getElementById(b.dataset.more),show=m.hasAttribute('hidden');
+  if(show){m.removeAttribute('hidden');b.textContent='Show less';}else{m.setAttribute('hidden','');b.textContent='Read more';}
+  const body=b.closest('.role__body');if(body)body.style.maxHeight=body.scrollHeight+'px';
+});
+
+// ---- gallery ----
+const fn=C.fieldNotes;
+$('#gintro').textContent=fn.intro;
+$('#glife').textContent=fn.lifeList;
+$('#gcount').textContent=nCountries;
+$('#glatest').innerHTML=`Latest lifer: ${alink(fn.latest.url,fn.latest.name)}${fn.latest.place?' in '+fn.latest.place:''}`;
+$('#ggrid').innerHTML=fn.photos.map((p,i)=>`<figure class="tile" data-i="${i}"><img loading="lazy" src="${p.src}" alt="${p.caption}"><figcaption><span>${p.caption}</span><em>${p.place}</em></figcaption></figure>`).join('');
+function openGallery(){document.body.classList.add('gallery-open');window.scrollTo(0,0);}
+$('#gback').addEventListener('click',()=>{document.body.classList.remove('gallery-open');window.scrollTo(0,0);});
+
+// lightbox
+const lb=$('#lightbox');
+$('#ggrid').addEventListener('click',e=>{const t=e.target.closest('.tile');if(!t)return;const p=fn.photos[+t.dataset.i];lb.querySelector('img').src=p.src;lb.querySelector('.lb-cap').innerHTML=`${p.caption} &middot; ${p.place}`;lb.classList.add('on');});
+lb.addEventListener('click',()=>lb.classList.remove('on'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on');});
+</script>
+</body>
+</html>
